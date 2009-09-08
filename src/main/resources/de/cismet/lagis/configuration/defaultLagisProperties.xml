@@ -34,11 +34,19 @@
         </permission>
     </permissions>
     <albConfiguration>
-        <albURL>                     
+        <albURL>
             <![CDATA[  http://s102x004.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowOnlineAlpha.pl?datasource=stadtgrundkarte&VERSION=1.1.1&REQUEST=GetFeatureInfo&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=true&BGCOLOR=0xF0F0F0&EXCEPTIONS=text/html&LAYERS=03_11&STYLES=schwarz&QUERY_LAYERS=03_11&INFO_FORMAT=text/html&X=<cismap:x>&Y=<cismap:y>]]>
         </albURL>
     </albConfiguration>
-    <glassfishSetup>   
+    <CrossoverConfiguration>
+        <ServerPort>19000</ServerPort>
+        <VerdisConfiguration>
+            <VerdisCrossoverPort>18000</VerdisCrossoverPort>
+            <Host>amy</Host>
+            <ORBPort>62734</ORBPort>
+        </VerdisConfiguration>
+    </CrossoverConfiguration>
+    <glassfishSetup>
         <!--<host>192.168.100.150</host>-->
         <host>zoidberg</host>
         <!--<host>192.168.100.15</host>-->
@@ -89,11 +97,11 @@
             <menueName>Baumdatei</menueName>
         </RessortWidget>
     </RessortWidgets>
-    <cismapWFSFormsPreferences>         
+    <cismapWFSFormsPreferences>
         <wfsForm id="strasse_hausnummer" title="Strasse, Hausnummern Suche" icon="/strhausnummer/x.png" className="de.cismet.cismap.commons.wfsforms.WFSFormAdress" menu="Strasse, Hausnummer">
             <wfsFormQuery id="all_streets" title="Strassen" server="http://s10221.wuppertal-intra.de/deegree/services" queryFile="/strhausnummer/request_alle_strassen_extent.xml" propertyPrefix="app" propertyNamespace="http://www.deegree.org/app" displayTextProperty="geographicIdentifier" extentProperty="geographicExtent" positionProperty="position" idProperty="identifier" type="INITIAL" componentName="cboAllStreets" />
             <wfsFormQuery id="numbers" title="Hausnummern" server="http://s10221.wuppertal-intra.de/deegree/services" queryFile="/strhausnummer/request_hausnummern_from_strasse_extent.xml" propertyPrefix="app" propertyNamespace="http://www.deegree.org/app" displayTextProperty="geographicIdentifier" extentProperty="geographicExtent" positionProperty="position" idProperty="identifier" type="FOLLOWUP" componentName="cboNumbersOfAStreet" queryPlaceholder="@@strasse_id@@" />
-        </wfsForm>                
+        </wfsForm>
     </cismapWFSFormsPreferences>
     <cismapMappingPreferences interactionMode="ZOOM" creationMode="POLYGON" handleInteractionMode="MOVE_HANDLE" snapping="false">
         <home default="false" srs="EPSG:4326" metric="false">
@@ -165,7 +173,7 @@
         <!--<Hostname>http://flexo.cismet.de:8080/deegree2/ogcwebservice</Hostname>-->
         <!--<Hostname>http://172.16.20.221/ogcwebservice/wfs</Hostname>-->
         <Query>
-            <wfs:GetFeature version="1.1.0" outputFormat="text/xml; subtype=gml/3.1.1" xmlns:wfs="http://www.opengis.net/wfs">                  
+            <wfs:GetFeature version="1.1.0" outputFormat="text/xml; subtype=gml/3.1.1" xmlns:wfs="http://www.opengis.net/wfs">
                 <!--<wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:Flurstueck">-->
                 <wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:wfs_flurstuecke">
                     <wfs:PropertyName>app:the_geom</wfs:PropertyName>
@@ -205,7 +213,7 @@
         <flurstueckNennerIdentifier>app:flurstn</flurstueckNennerIdentifier>
     </flurstueckXMLIdentifier>
     <cismapActiveLayerConfiguration>
-        <Layers>   
+        <Layers>
             <!--<WMSServiceLayer name="Wuppertaler Orthophoto 2005" visible="true" enabled="true" translucency="1.0" bgColor="0xF0F0F0" imageFormat="image/png" exceptionFormat="application/vnd.ogc.se_inimage">
                 <capabilities type="OGC-WMS" active="false"><![CDATA[http://s102w2k1.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/GetCapabilities.pl?VERSION=1.1.1&SERVICE=WMS&REQUEST=capabilities&datasource=grundlkarten]]></capabilities>
                 <wmsLayer name="02_12" enabled="true" style="farbig" info="false" />
@@ -289,7 +297,7 @@
                 </Attributes>
             </WebFeatureServiceLayer>
             <DocumentFeatureServiceLayer name="Document test" visible="true" enabled="true" translucency="0.2">
-                <documentURI>                    
+                <documentURI>
                     <![CDATA[file:///home/spuhl/result.xml]]>
                 </documentURI>
                 <renderingFeature>
@@ -307,7 +315,7 @@
                             <Color red="0" green="0" blue="0" alpha="255" />
                         </primaryAnnotationColor>
                     </DefaultWFSFeature>
-                </renderingFeature>                
+                </renderingFeature>
                 <!--<Attributes>
                     <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:gid" type="xsd:integer">
                     </xsd:element>
