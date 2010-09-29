@@ -45,18 +45,19 @@
             <Host>amy</Host>
             <ORBPort>62734</ORBPort>
         </VerdisConfiguration>
+        <KassenzeichenBuffer>-2</KassenzeichenBuffer>
     </CrossoverConfiguration>
     <glassfishSetup>
         <!--<host>192.168.100.150</host>-->
-        <host>zoidberg</host>
+        <host>amy</host>
         <!--<host>192.168.100.15</host>-->
-        <!--<orbPort>3700</orbPort>-->
-        <orbPort>53700</orbPort>
+        <orbPort>3700</orbPort>
+        <!--<orbPort>62734</orbPort>-->
         <!--<host>172.16.20.221</host>
         <orbPort>48622</orbPort>-->
     </glassfishSetup>
     <HistoryServer>
-        <url>http://flexo.cismet.de/cgi-bin/format-graph</url>
+        <url>http://s10221:8099/verdis/cgi-bin/format-graph</url>
     </HistoryServer>
     <urls>
         <onlineHelp>www.cismet.de</onlineHelp>
@@ -96,6 +97,12 @@
             <className>de.cismet.lagis.ressort.baum.BaumRessortWidget</className>
             <menueName>Baumdatei</menueName>
         </RessortWidget>
+        <!--<RessortWidget readonly="true">
+            <widgetName>Flurstueck Historie</widgetName>
+            <widgetIcon>/de/cismet/lagis/ressource/icons/titlebar/ressort.png</widgetIcon>
+            <className>de.cismet.lagis.plugin.NewHistoryWidget</className>
+            <menueName>Flurstueck Historie</menueName>
+        </RessortWidget>-->
     </RessortWidgets>
     <cismapWFSFormsPreferences>
         <wfsForm id="strasse_hausnummer" title="Strasse, Hausnummern Suche" icon="/strhausnummer/x.png" className="de.cismet.cismap.commons.wfsforms.WFSFormAdress" menu="Strasse, Hausnummer">
@@ -116,42 +123,36 @@
             <BoundingBox x1=" 2584473.0" y1=" 5682858.0" x2="2584869.0" y2="5683078.0" />
         </Position>
         <printing>
-            <scale selected="false" denominator="0">frei
-            </scale>
-            <scale selected="false" denominator="-1">Benutzerdefiniert
-            </scale>
-            <scale selected="true" denominator="500">1:500
-            </scale>
-            <scale selected="false" denominator="1000">1:1000
-            </scale>
-            <scale selected="false" denominator="1500">1:1500
-            </scale>
-            <scale selected="false" denominator="2000">1:2000
-            </scale>
-            <scale selected="false" denominator="2500">1:2500
-            </scale>
-            <resolution selected="false" dpi="72">72 dpi
-            </resolution>
-            <resolution selected="false" dpi="100">100 dpi
-            </resolution>
-            <resolution selected="false" dpi="150">150 dpi
-            </resolution>
-            <resolution selected="false" dpi="200">200 dpi
-            </resolution>
-            <resolution selected="true" dpi="300">300 dpi
-            </resolution>
+            <scale selected="false" denominator="0">frei</scale>
+            <scale selected="true" denominator="-1">Benutzerdefiniert</scale>
+            <scale selected="false" denominator="250">1:250</scale>
+            <scale selected="false" denominator="500">1:500</scale>
+            <scale selected="false" denominator="750">1:750</scale>
+            <scale selected="false" denominator="1000">1:1000</scale>
+            <scale selected="false" denominator="1500">1:1500</scale>
+            <scale selected="false" denominator="2000">1:2000</scale>
+            <scale selected="false" denominator="2500">1:2500</scale>
+            <scale selected="false" denominator="5000">1:5000</scale>
+            <scale selected="false" denominator="7500">1:7500</scale>
+            <scale selected="false" denominator="10000">1:10000</scale>
+            <scale selected="false" denominator="15000">1:15000</scale>
+
+            <resolution selected="false" dpi="72">72 dpi (PDF ca. 0,5MB bei DIN A4)</resolution>
+            <resolution selected="true"  dpi="100">100 dpi (PDF ca. 1,0MB bei DIN A4)</resolution>
+            <resolution selected="false" dpi="150">150 dpi (PDF ca. 2,0MB bei DIN A4)</resolution>
+            <resolution selected="false" dpi="200">200 dpi (PDF ca. 3,5MB bei DIN A4)</resolution>
+            <resolution selected="false" dpi="250">250 dpi (PDF ca. 5,0MB bei DIN A4)</resolution>
+            <resolution selected="false" dpi="300">300 dpi (PDF ca. 7,0MB bei DIN A4)</resolution>
+            <resolution selected="false" dpi="350">350 dpi (PDF ca. 9,5MB bei DIN A4)</resolution>
+            <resolution selected="false" dpi="400">400 dpi (PDF ca. 11,0MB bei DIN A4)</resolution>
 
             <template selected="true" title="Standard DIN-A4 hochkant" file="/A4H.jasper" className="de.cismet.cismap.printing.templateinscriber.A4H" mapPlaceholder="map" mapWidth="508" mapHeight="699" scaleDenominatorPlaceholder="scale" />
             <template selected="false" title="Standard DIN-A4 quer" file="/A4Q.jasper" className="de.cismet.cismap.printing.templateinscriber.A4H" mapPlaceholder="map" mapWidth="751" mapHeight="483" scaleDenominatorPlaceholder="scale" />
             <template selected="false" title="Standard DIN-A3 hochkant" file="/A3H.jasper" className="de.cismet.cismap.printing.templateinscriber.A4H" mapPlaceholder="map" mapWidth="751" mapHeight="1049" scaleDenominatorPlaceholder="scale" />
             <template selected="false" title="Standard DIN-A3 quer" file="/A3Q.jasper" className="de.cismet.cismap.printing.templateinscriber.A4H" mapPlaceholder="map" mapWidth="1104" mapHeight="699" scaleDenominatorPlaceholder="scale" />
-            
-            <action selected="false" id="print">Drucken
-            </action>
-            <action selected="false" id="printpreview">Druckvorschau
-            </action>
-            <action selected="true" id="pdf">PDF anzeigen
-            </action>
+            <action selected="false" id="print">Drucken</action>
+            <action selected="false" id="printpreview">Druckvorschau</action>
+            <action selected="true" id="pdf">PDF anzeigen</action>
         </printing>
     </cismapMappingPreferences>
     <!--TODO Verbessern anständiges Format erstellen-->
@@ -168,14 +169,19 @@
     <WFSRequest>
         <Encoding>&lt;?xml version="1.0"?&gt;</Encoding>
         <!--<Hostname>http://elzar:8080/deegree2/ogcwebservice</Hostname>-->
-        <Hostname>http://zoidberg:8081/deegree2/ogcwebservice</Hostname>
-        <!--<Hostname>http://192.168.100.15:8081/deegree2/ogcwebservice</Hostname>-->
+        <!--<Hostname>http://zoidberg:8081/deegree2/ogcwebservice</Hostname>-->
         <!--<Hostname>http://flexo.cismet.de:8080/deegree2/ogcwebservice</Hostname>-->
-        <!--<Hostname>http://172.16.20.221/ogcwebservice/wfs</Hostname>-->
+        <Hostname>http://zoidberg:8081/deegree2/ogcwebservice</Hostname>
         <Query>
             <wfs:GetFeature version="1.1.0" outputFormat="text/xml; subtype=gml/3.1.1" xmlns:wfs="http://www.opengis.net/wfs">
                 <!--<wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:Flurstueck">-->
                 <wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:wfs_flurstuecke">
+                    <!--<wfs:PropertyName>app:geom</wfs:PropertyName>
+                    <wfs:PropertyName>app:objid</wfs:PropertyName>
+                    <wfs:PropertyName>app:gem</wfs:PropertyName>
+                    <wfs:PropertyName>app:flur</wfs:PropertyName>
+                    <wfs:PropertyName>app:flurstz</wfs:PropertyName>
+                    <wfs:PropertyName>app:flurstn</wfs:PropertyName>-->
                     <wfs:PropertyName>app:the_geom</wfs:PropertyName>
                     <wfs:PropertyName>app:gem</wfs:PropertyName>
                     <wfs:PropertyName>app:flur</wfs:PropertyName>
@@ -214,30 +220,49 @@
     </flurstueckXMLIdentifier>
     <cismapActiveLayerConfiguration>
         <Layers>
-            <!--<WMSServiceLayer name="Wuppertaler Orthophoto 2005" visible="true" enabled="true" translucency="1.0" bgColor="0xF0F0F0" imageFormat="image/png" exceptionFormat="application/vnd.ogc.se_inimage">
-                <capabilities type="OGC-WMS" active="false"><![CDATA[http://s102w2k1.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/GetCapabilities.pl?VERSION=1.1.1&SERVICE=WMS&REQUEST=capabilities&datasource=grundlkarten]]></capabilities>
-                <wmsLayer name="02_12" enabled="true" style="farbig" info="false" />
-            </WMSServiceLayer>-->
-            <simpleWms layerPosition="4" skip="false" enabled="true" name="Stadtgrundkarte gelb" translucency="1.0">
-                <![CDATA[
+            <simpleWms layerPosition="2" skip="false" enabled="false" name="Stadtgrundkarte gelb" translucency="1.0">
+            <![CDATA[
                 http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=stadtgrundkarte&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=03_1&STYLES=gelb
                 ]]>
             </simpleWms>
-            <simpleWms layerPosition="3" skip="false" enabled="true" name="Stadtgrundkarte schwarz" translucency="1.0">
-                <![CDATA[
+            <simpleWms layerPosition="1" skip="false" enabled="true" name="Stadtgrundkarte schwarz" translucency="1.0">
+            <![CDATA[
                 http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=stadtgrundkarte&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=03_1&STYLES=schwarz
                 ]]>
             </simpleWms>
-            <simpleWms layerPosition="2" skip="false" enabled="true" name="vorl. Orthophoto 2007" translucency="1.0">
-                <![CDATA[
-                http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=testbereich&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=102_10&STYLES=farbig
+            <simpleWms layerPosition="3" skip="false" enabled="true" name="Orthophoto 2007" translucency="1.0">
+            <![CDATA[
+                http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=grundlkarten&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=02_12&STYLES=farbig
                 ]]>
             </simpleWms>
-            <simpleWms layerPosition="1" skip="false" enabled="true" name="DGK farbig" translucency="1.0">
-                <![CDATA[
-                http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=grundlkarten&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=02_34&STYLES=DGKf,DGKt
+            <simpleWms layerPosition="4" skip="false" enabled="true" name="Kanalnetz" translucency="0.2">
+            <![CDATA[
+                 http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=kanal&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=04_1,04_2,04_3,04_3,04_4,04_5&STYLES=farbe_schmutz,farbe_regen,farbe_misch,farbe_bachver,farbe_stillg
+                 ]]>
+            </simpleWms>
+            <simpleWms layerPosition="5" skip="false" enabled="false" name="B-Planverfahren (rechtsverb.)" translucency="0.5">
+            <![CDATA[
+                    http://s10221.wuppertal-intra.de/bplanverfahren/services?&VERSION=1.1.1&REQUEST=GetMap&BBOX=<cismap:boundingBox>&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=TRUE&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=bverfahren-r&STYLES=bvr
                     ]]>
             </simpleWms>
+            <simpleWms layerPosition="6" skip="false" enabled="false" name="B-Planverfahren (im Verfahren)" translucency="0.5">
+            <![CDATA[
+                    http://s10221.wuppertal-intra.de/bplanverfahren/services?&VERSION=1.1.1&REQUEST=GetMap&BBOX=<cismap:boundingBox>&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=TRUE&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=bverfahren-n&STYLES=bvn
+                 ]]>
+            </simpleWms>
+            <simpleWms layerPosition="7" skip="false" enabled="false" name="städtische Flurstücke (Lagis)" translucency="0.2">
+                <![CDATA[
+                    http://s10221.wuppertal-intra.de/stadt-flurstuecke/services?&VERSION=1.1.1&REQUEST=GetMap&BBOX=<cismap:boundingBox>&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=TRUE&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=stadt_flurst&STYLES=rot
+                ]]>
+            </simpleWms>
+
+   <!--
+        <simpleWms layerPosition="1" skip="false" enabled="true" name="DGK farbig" translucency="1.0">
+            <![CDATA[
+                http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=grundlkarten&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=02_34&STYLES=DGKf,DGKt
+                    ]]>
+        </simpleWms>
+   -->
             <WebFeatureServiceLayer name="Flurstücke" visible="true" enabled="true" translucency="0.2">
                 <capabilities type="OGC" active="false"><![CDATA[http://zoidberg:8081/deegree2/ogcwebservice]]>
                 </capabilities>
@@ -257,7 +282,7 @@
                         </primaryAnnotationColor>
                     </DefaultWFSFeature>
                 </renderingFeature>
-                <wfs:GetFeature xmlns:wfs="http://www.opengis.net/wfs" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" version="1.1.0" outputFormat="text/xml; subtype=gml/3.1.1">
+                <wfs:GetFeature xmlns:wfs="http://www.opengis.net/wfs" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" version="1.1.0" maxFeatures="1001" outputFormat="text/xml; subtype=gml/3.1.1">
                     <wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:wfs_flurstuecke">
                         <ogc:Filter>
                             <And>
@@ -296,82 +321,6 @@
                     </xsd:element>
                 </Attributes>
             </WebFeatureServiceLayer>
-            <DocumentFeatureServiceLayer name="Document test" visible="true" enabled="true" translucency="0.2">
-                <documentURI>
-                    <![CDATA[file:///home/spuhl/result.xml]]>
-                </documentURI>
-                <renderingFeature>
-                    <DefaultWFSFeature id="0" idExpression="app:gid" lineWidth="1" transparency="1.0" primaryAnnotation="if (app:flurstn!=&quot;0&quot;) {return app:flurstz + &quot;\n\u2500\u2500\n&quot; + app:flurstn;} else {return app:flurstz;}" secondaryAnnotation="app:gem+&quot; &quot;+app:flur+&quot; &quot;+app:flurstz+&quot;/&quot;+app:flurstn;" primaryAnnotationScaling="1.0" primaryAnnotationJustification="0.0" minScaleDenominator="0" maxScaleDenominator="2500" autoscale="true" highlightingEnabled="true">
-                        <fillingColor>
-                            <Color red="180" green="177" blue="166" alpha="255" />
-                        </fillingColor>
-                        <lineColor>
-                            <Color red="106" green="86" blue="117" alpha="255" />
-                        </lineColor>
-                        <primaryAnnotationFont>
-                            <Font name="SansSerif.plain" style="0" size="12" />
-                        </primaryAnnotationFont>
-                        <primaryAnnotationColor>
-                            <Color red="0" green="0" blue="0" alpha="255" />
-                        </primaryAnnotationColor>
-                    </DefaultWFSFeature>
-                </renderingFeature>
-                <!--<Attributes>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:gid" type="xsd:integer">
-                    </xsd:element>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:gem" type="xsd:integer">
-                    </xsd:element>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:flur" type="xsd:integer">
-                    </xsd:element>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:flurstz" type="xsd:integer">
-                    </xsd:element>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:flurstn" type="xsd:integer">
-                    </xsd:element>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:the_geom" type="gml:GeometryPropertyType">
-                    </xsd:element>
-                    <xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="app:hist_ab" type="xsd:dateTime">
-                    </xsd:element>
-                </Attributes>-->
-            </DocumentFeatureServiceLayer>
         </Layers>
-        <!--
-        <featureLayers>
-            <simpleWebFeatureService name="Test WFS" skip="false" featureType="Flurstück" layerPosition ="5" visible="true" enabled="true" translucency="0.4" lineColor="0,0,0" fillingColor="150,150,150"> -->
-        <!--<Host>http://elzar:8080/deegree2/ogcwebservice</Host>-->
-        <!--<Host>http://zoidberg:8081/deegree2/ogcwebservice</Host>-->
-        <!--<Host>http://192.168.100.15:8081/deegree2/ogcwebservice</Host>-->
-        <!--<Host>http://flexo.cismet.de:8080/deegree2/ogcwebservice</Host>-->
-        <!--<Host>http://172.16.20.221/ogcwebservice/wfs</Host>-->                        
-        <!--<WFSRequest>
-                    <wfs:GetFeature version="1.1.0" outputFormat="text/xml; subtype=gml/3.1.1" 
-                                    xmlns:wfs="http://www.opengis.net/wfs" 
-                                    xmlns:gml="http://www.opengis.net/gml">
-                        <wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:wfs_flurstuecke">                          
-                            <Filter xmlns="http://www.opengis.net/ogc">
-                                <And>
-                                    <PropertyIsNull>
-                                        <PropertyName>app:hist_ab</PropertyName>										
-                                    </PropertyIsNull>
-                                    <BBOX>
-                                        <PropertyName>app:the_geom</PropertyName>
-                                        <gml:Box>										
-                                            <gml:coord>
-                                                <gml:X></gml:X>
-                                                <gml:Y></gml:Y>
-                                            </gml:coord>
-                                            <gml:coord>
-                                                <gml:X></gml:X>
-                                                <gml:Y></gml:Y>
-                                            </gml:coord>
-                                        </gml:Box>
-                                    </BBOX>			    
-                                </And>
-                            </Filter>
-                        </wfs:Query>
-                    </wfs:GetFeature>   
-                </WFSRequest>
-                <Encoding>iso-8859-1</Encoding>                                                   
-            </simpleWebFeatureService>
-        </featureLayers>-->
     </cismapActiveLayerConfiguration>
 </lagis>
