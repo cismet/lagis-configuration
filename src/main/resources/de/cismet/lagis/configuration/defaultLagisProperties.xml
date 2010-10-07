@@ -7,10 +7,8 @@
     Description:
         Purpose of the document follows.
 -->
+
 <lagis>
-    <login>
-        <standalone userdomainname="VERDIS" callserverhost="amy"/>
-    </login>
     <permissions>
         <permission>
             <readWrite>true</readWrite>
@@ -19,23 +17,29 @@
         </permission>
         <permission>
             <readWrite>false</readWrite>
-            <userGroup>LagISTest</userGroup>
-            <userDomain>VERDIS</userDomain>
-        </permission>
-        <permission>
-            <readWrite>true</readWrite>
             <userGroup>Bewertung</userGroup>
             <userDomain>VERDIS</userDomain>
         </permission>
         <permission>
-            <readWrite>false</readWrite>
+            <readWrite substitutionAttribute="lagis.perm.nkf.rw">false</readWrite>
             <userGroup>NKF</userGroup>
+            <userDomain>VERDIS</userDomain>
+        </permission>
+        <permission>
+            <readWrite>false</readWrite>
+            <userGroup>GMW-ZD1</userGroup>
+            <userDomain>VERDIS</userDomain>
+        </permission>
+        <permission>
+            <readWrite>false</readWrite>
+            <userGroup>VORN_GAST</userGroup>
             <userDomain>VERDIS</userDomain>
         </permission>
     </permissions>
     <albConfiguration>
         <albURL>
-            <![CDATA[  http://s102x004.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowOnlineAlpha.pl?datasource=stadtgrundkarte&VERSION=1.1.1&REQUEST=GetFeatureInfo&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=true&BGCOLOR=0xF0F0F0&EXCEPTIONS=text/html&LAYERS=03_11&STYLES=schwarz&QUERY_LAYERS=03_11&INFO_FORMAT=text/html&X=<cismap:x>&Y=<cismap:y>]]>
+            <![CDATA[http://s102x004.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowOnlineAlpha.pl?datasource=stadtgrundkarte&VERSION=1.1.1&REQUEST=GetFeatureInfo&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=true&BGCOLOR=0xF0F0F0&EXCEPTIONS=text/html&LAYERS=03_11&STYLES=schwarz&QUERY_LAYERS=03_11&INFO_FORMAT=text/html&X=<cismap:x>&Y=<cismap:y>]]>
+            <!--<![CDATA[http://www.google.de]]> -->
         </albURL>
     </albConfiguration>
     <CrossoverConfiguration>
@@ -51,59 +55,35 @@
         <!--<host>192.168.100.150</host>-->
         <host>amy</host>
         <!--<host>192.168.100.15</host>-->
-        <orbPort>3700</orbPort>
+        <orbPort>62734</orbPort>
         <!--<orbPort>62734</orbPort>-->
         <!--<host>172.16.20.221</host>
         <orbPort>48622</orbPort>-->
     </glassfishSetup>
-    <HistoryServer>
-        <url>http://s10221:8099/verdis/cgi-bin/format-graph</url>
-    </HistoryServer>
     <urls>
         <onlineHelp>www.cismet.de</onlineHelp>
         <news>www.cismet.de</news>
     </urls>
-    <userDependingConfigurationProperties>
-        <classpathfolder>/de/cismet/lagis/configuration/</classpathfolder>
-        <file>userDependingConfiguration.properties</file>
-    </userDependingConfigurationProperties>
     <emailConfiguration username="" password="" senderAddress="sebastian.puhl@cismet.de" smtpHost="smtp.uni-saarland.de">
         <nkfMailAddresses>
-            <receiver>sebastian.puhl@cismet.de</receiver>
+            <receiver>lagerbuch.102@stadt.wuppertal.de</receiver>
         </nkfMailAddresses>
         <developerMailaddresses>
             <receiver>sebastian.puhl@cismet.de</receiver>
         </developerMailaddresses>
         <maintenanceMailaddresses>
-            <receiver>sebastian.puhl@cismet.de</receiver>
+            <receiver>lagerbuch.102@stadt.wuppertal.de</receiver>
         </maintenanceMailaddresses>
     </emailConfiguration>
     <RessortWidgets>
         <RessortWidget readonly="false">
-            <widgetName>Spielplatz (Bsp. für Ressorterweiterung)</widgetName>
+            <widgetName>Spielplatz</widgetName>
             <widgetIcon>/de/cismet/lagis/ressource/icons/titlebar/ressort.png</widgetIcon>
-            <className>de.cismet.lagis.ressort.spielplatz.SpielplatzRessortWidget</className>
+            <className>de.cismet.lagis.ressort.SpielplatzRessortWidget</className>
             <menueName>Spielplatz</menueName>
         </RessortWidget>
-        <RessortWidget readonly="false">
-            <widgetName>Vermietung/Verpachtung</widgetName>
-            <widgetIcon>/de/cismet/lagis/ressource/icons/titlebar/ressort.png</widgetIcon>
-            <className>de.cismet.lagis.ressort.mipa.MiPaRessortWidget</className>
-            <menueName>Vermietung/Verpachtung</menueName>
-        </RessortWidget>
-        <RessortWidget readonly="false">
-            <widgetName>Baumdatei</widgetName>
-            <widgetIcon>/de/cismet/lagis/ressource/icons/titlebar/ressort.png</widgetIcon>
-            <className>de.cismet.lagis.ressort.baum.BaumRessortWidget</className>
-            <menueName>Baumdatei</menueName>
-        </RessortWidget>
-        <!--<RessortWidget readonly="true">
-            <widgetName>Flurstueck Historie</widgetName>
-            <widgetIcon>/de/cismet/lagis/ressource/icons/titlebar/ressort.png</widgetIcon>
-            <className>de.cismet.lagis.plugin.NewHistoryWidget</className>
-            <menueName>Flurstueck Historie</menueName>
-        </RessortWidget>-->
-    </RessortWidgets>
+        <RessortWidget substitutionAttribute="lagis.ressort.widget"/>
+     </RessortWidgets>
     <cismapWFSFormsPreferences>
         <wfsForm id="strasse_hausnummer" title="Strasse, Hausnummern Suche" icon="/strhausnummer/x.png" className="de.cismet.cismap.commons.wfsforms.WFSFormAdress" menu="Strasse, Hausnummer">
             <wfsFormQuery id="all_streets" title="Strassen" server="http://s10221.wuppertal-intra.de/deegree/services" queryFile="/strhausnummer/request_alle_strassen_extent.xml" propertyPrefix="app" propertyNamespace="http://www.deegree.org/app" displayTextProperty="geographicIdentifier" extentProperty="geographicExtent" positionProperty="position" idProperty="identifier" type="INITIAL" componentName="cboAllStreets" />
@@ -123,7 +103,7 @@
             <BoundingBox x1=" 2584473.0" y1=" 5682858.0" x2="2584869.0" y2="5683078.0" />
         </Position>
         <printing>
-            <scale selected="false" denominator="0">frei</scale>
+             <scale selected="false" denominator="0">frei</scale>
             <scale selected="true" denominator="-1">Benutzerdefiniert</scale>
             <scale selected="false" denominator="250">1:250</scale>
             <scale selected="false" denominator="500">1:500</scale>
@@ -138,13 +118,13 @@
             <scale selected="false" denominator="15000">1:15000</scale>
 
             <resolution selected="false" dpi="72">72 dpi (PDF ca. 0,5MB bei DIN A4)</resolution>
-            <resolution selected="true"  dpi="100">100 dpi (PDF ca. 1,0MB bei DIN A4)</resolution>
-            <resolution selected="false" dpi="150">150 dpi (PDF ca. 2,0MB bei DIN A4)</resolution>
-            <resolution selected="false" dpi="200">200 dpi (PDF ca. 3,5MB bei DIN A4)</resolution>
-            <resolution selected="false" dpi="250">250 dpi (PDF ca. 5,0MB bei DIN A4)</resolution>
-            <resolution selected="false" dpi="300">300 dpi (PDF ca. 7,0MB bei DIN A4)</resolution>
-            <resolution selected="false" dpi="350">350 dpi (PDF ca. 9,5MB bei DIN A4)</resolution>
-            <resolution selected="false" dpi="400">400 dpi (PDF ca. 11,0MB bei DIN A4)</resolution>
+	    <resolution selected="true"  dpi="100">100 dpi (PDF ca. 1,0MB bei DIN A4)</resolution>
+	    <resolution selected="false" dpi="150">150 dpi (PDF ca. 2,0MB bei DIN A4)</resolution>
+	    <resolution selected="false" dpi="200">200 dpi (PDF ca. 3,5MB bei DIN A4)</resolution>
+	    <resolution selected="false" dpi="250">250 dpi (PDF ca. 5,0MB bei DIN A4)</resolution>
+	    <resolution selected="false" dpi="300">300 dpi (PDF ca. 7,0MB bei DIN A4)</resolution>
+	    <resolution selected="false" dpi="350">350 dpi (PDF ca. 9,5MB bei DIN A4)</resolution>
+	    <resolution selected="false" dpi="400">400 dpi (PDF ca. 11,0MB bei DIN A4)</resolution>
 
             <template selected="true" title="Standard DIN-A4 hochkant" file="/A4H.jasper" className="de.cismet.cismap.printing.templateinscriber.A4H" mapPlaceholder="map" mapWidth="508" mapHeight="699" scaleDenominatorPlaceholder="scale" />
             <template selected="false" title="Standard DIN-A4 quer" file="/A4Q.jasper" className="de.cismet.cismap.printing.templateinscriber.A4H" mapPlaceholder="map" mapWidth="751" mapHeight="483" scaleDenominatorPlaceholder="scale" />
@@ -159,11 +139,7 @@
     <HTMLTooltips>
         <HTMLTooltip>
             <id>Verwaltungsgebrauch</id>
-            <HTML>
-                <Oberkategorie></Oberkategorie>/
-                <Kategorie></Kategorie>/
-                <Verwaltungsgebrauch></Verwaltungsgebrauch>
-            </HTML>
+            <HTML><Oberkategorie></Oberkategorie>/<Kategorie></Kategorie>/<Verwaltungsgebrauch></Verwaltungsgebrauch></HTML>
         </HTMLTooltip>
     </HTMLTooltips>
     <WFSRequest>
@@ -171,7 +147,7 @@
         <!--<Hostname>http://elzar:8080/deegree2/ogcwebservice</Hostname>-->
         <!--<Hostname>http://zoidberg:8081/deegree2/ogcwebservice</Hostname>-->
         <!--<Hostname>http://flexo.cismet.de:8080/deegree2/ogcwebservice</Hostname>-->
-        <Hostname>http://zoidberg:8081/deegree2/ogcwebservice</Hostname>
+        <Hostname>http://172.16.20.221/ogcwebservice/wfs</Hostname>
         <Query>
             <wfs:GetFeature version="1.1.0" outputFormat="text/xml; subtype=gml/3.1.1" xmlns:wfs="http://www.opengis.net/wfs">
                 <!--<wfs:Query xmlns:app="http://www.deegree.org/app" typeName="app:Flurstueck">-->
@@ -220,42 +196,27 @@
     </flurstueckXMLIdentifier>
     <cismapActiveLayerConfiguration>
         <Layers>
-            <simpleWms layerPosition="2" skip="false" enabled="false" name="Stadtgrundkarte gelb" translucency="1.0">
+           <simpleWms layerPosition="2" skip="false" enabled="false" name="Stadtgrundkarte gelb" translucency="1.0">
             <![CDATA[
                 http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=stadtgrundkarte&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=03_1&STYLES=gelb
                 ]]>
-            </simpleWms>
-            <simpleWms layerPosition="1" skip="false" enabled="true" name="Stadtgrundkarte schwarz" translucency="1.0">
+        </simpleWms>
+        <simpleWms layerPosition="1" skip="false" enabled="true" name="Stadtgrundkarte schwarz" translucency="1.0">
             <![CDATA[
                 http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=stadtgrundkarte&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=03_1&STYLES=schwarz
                 ]]>
-            </simpleWms>
-            <simpleWms layerPosition="3" skip="false" enabled="true" name="Orthophoto 2007" translucency="1.0">
+        </simpleWms>
+        <simpleWms layerPosition="3" skip="false" enabled="true" name="Orthophoto 2007" translucency="1.0">
             <![CDATA[
                 http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=grundlkarten&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=02_12&STYLES=farbig
                 ]]>
-            </simpleWms>
-            <simpleWms layerPosition="4" skip="false" enabled="true" name="Kanalnetz" translucency="0.2">
+        </simpleWms>
+                <simpleWms layerPosition="4" skip="false" enabled="true" name="Kanalnetz" translucency="0.2">
             <![CDATA[
                  http://wunda-wms.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowMap.pl?datasource=kanal&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=false&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=04_1,04_2,04_3,04_3,04_4,04_5&STYLES=farbe_schmutz,farbe_regen,farbe_misch,farbe_bachver,farbe_stillg
                  ]]>
-            </simpleWms>
-            <simpleWms layerPosition="5" skip="false" enabled="false" name="B-Planverfahren (rechtsverb.)" translucency="0.5">
-            <![CDATA[
-                    http://s10221.wuppertal-intra.de/bplanverfahren/services?&VERSION=1.1.1&REQUEST=GetMap&BBOX=<cismap:boundingBox>&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=TRUE&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=bverfahren-r&STYLES=bvr
-                    ]]>
-            </simpleWms>
-            <simpleWms layerPosition="6" skip="false" enabled="false" name="B-Planverfahren (im Verfahren)" translucency="0.5">
-            <![CDATA[
-                    http://s10221.wuppertal-intra.de/bplanverfahren/services?&VERSION=1.1.1&REQUEST=GetMap&BBOX=<cismap:boundingBox>&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=TRUE&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=bverfahren-n&STYLES=bvn
-                 ]]>
-            </simpleWms>
-            <simpleWms layerPosition="7" skip="false" enabled="false" name="städtische Flurstücke (Lagis)" translucency="0.2">
-                <![CDATA[
-                    http://s10221.wuppertal-intra.de/stadt-flurstuecke/services?&VERSION=1.1.1&REQUEST=GetMap&BBOX=<cismap:boundingBox>&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=TRUE&BGCOLOR=0xF0F0F0&EXCEPTIONS=application/vnd.ogc.se_xml&LAYERS=stadt_flurst&STYLES=rot
-                ]]>
-            </simpleWms>
-
+        </simpleWms>
+        <simpleWms substitutionAttribute="lagis.activelayers.simplewms"/>
    <!--
         <simpleWms layerPosition="1" skip="false" enabled="true" name="DGK farbig" translucency="1.0">
             <![CDATA[
@@ -264,7 +225,7 @@
         </simpleWms>
    -->
             <WebFeatureServiceLayer name="Flurstücke" visible="true" enabled="true" translucency="0.2">
-                <capabilities type="OGC" active="false"><![CDATA[http://zoidberg:8081/deegree2/ogcwebservice]]>
+                <capabilities type="OGC" active="false"><![CDATA[http://172.16.20.221/ogcwebservice/wfs]]>
                 </capabilities>
                 <renderingFeature>
                     <DefaultWFSFeature id="0" idExpression="app:gid" lineWidth="1" transparency="1.0" primaryAnnotation="if (app:flurstn!=&quot;0&quot;) {return app:flurstz + &quot;\n\u2500\u2500\n&quot; + app:flurstn;} else {return app:flurstz;}" secondaryAnnotation="app:gem+&quot; &quot;+app:flur+&quot; &quot;+app:flurstz+&quot;/&quot;+app:flurstn;" primaryAnnotationScaling="1.0" primaryAnnotationJustification="0.0" minScaleDenominator="0" maxScaleDenominator="2500" autoscale="true" highlightingEnabled="true">
