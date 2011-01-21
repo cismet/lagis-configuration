@@ -46,16 +46,16 @@
         <ServerPort>19000</ServerPort>
         <VerdisConfiguration>
             <VerdisCrossoverPort>18000</VerdisCrossoverPort>
-            <Host>amy</Host>
-            <ORBPort>62734</ORBPort>
+            <Host>leo</Host>
+            <ORBPort>3700</ORBPort>
         </VerdisConfiguration>
         <KassenzeichenBuffer>-2</KassenzeichenBuffer>
     </CrossoverConfiguration>
     <glassfishSetup>
         <!--<host>192.168.100.150</host>-->
-        <host>amy</host>
+        <host>leo</host>
         <!--<host>192.168.100.15</host>-->
-        <orbPort>62734</orbPort>
+        <orbPort>3700</orbPort>
         <!--<orbPort>62734</orbPort>-->
         <!--<host>172.16.20.221</host>
         <orbPort>48622</orbPort>-->
@@ -66,13 +66,13 @@
     </urls>
     <emailConfiguration username="" password="" senderAddress="sebastian.puhl@cismet.de" smtpHost="smtp.uni-saarland.de">
         <nkfMailAddresses>
-            <receiver>lagerbuch.102@stadt.wuppertal.de</receiver>
+            <receiver>thorsten.hell@cismet.de</receiver>
         </nkfMailAddresses>
         <developerMailaddresses>
-            <receiver>sebastian.puhl@cismet.de</receiver>
+            <receiver>thorsten.hell@cismet.de</receiver>
         </developerMailaddresses>
         <maintenanceMailaddresses>
-            <receiver>lagerbuch.102@stadt.wuppertal.de</receiver>
+            <receiver>thorsten.hell@cismet.de</receiver>
         </maintenanceMailaddresses>
     </emailConfiguration>
     <RessortWidgets>
