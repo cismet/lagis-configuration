@@ -18,7 +18,7 @@
             <userDomain>LAGIS</userDomain>
         </permission>
         <permission>
-            <readWrite substitutionAttribute="lagis.perm.nkf.rw">false</readWrite>
+            <readWrite>true</readWrite>
             <userGroup>Bewertung</userGroup>
             <userDomain>LAGIS</userDomain>
         </permission>
@@ -38,11 +38,11 @@
             <userDomain>LAGIS</userDomain>
         </permission>
     </permissions>
-    <cidsAppBackend>
+    <!--<cidsAppBackend>
         <domain>LAGIS</domain>
         <connectionclass>Sirius.navigator.connection.RESTfulConnection</connectionclass>
-        <callserverurl>http://s10221:9917/callserver/binary</callserverurl>
-    </cidsAppBackend>
+        <callserverurl>http://localhost:9917/callserver/binary</callserverurl>
+    </cidsAppBackend>-->
     <albConfiguration>
         <albURL>
             <![CDATA[http://s102x004.wuppertal-intra.de/wunda_dk_v61/isserver/ims/scripts/ShowOnlineAlpha.pl?datasource=stadtgrundkarte&VERSION=1.1.1&REQUEST=GetFeatureInfo&WIDTH=<cismap:width>&HEIGHT=<cismap:height>&BBOX=<cismap:boundingBox>&SRS=EPSG:31466&FORMAT=image/png&TRANSPARENT=true&BGCOLOR=0xF0F0F0&EXCEPTIONS=text/html&LAYERS=03_11&STYLES=schwarz&QUERY_LAYERS=03_11&INFO_FORMAT=text/html&X=<cismap:x>&Y=<cismap:y>]]>
@@ -51,11 +51,7 @@
     </albConfiguration>
     <CrossoverConfiguration>
         <ServerPort>19000</ServerPort>
-        <VerdisConfiguration>
-            <VerdisCrossoverPort>18000</VerdisCrossoverPort>
-            <Host>s10221</Host>
-            <ORBPort>48617</ORBPort>
-        </VerdisConfiguration>
+        <VerdisCrossoverPort>18000</VerdisCrossoverPort>
         <KassenzeichenBuffer>-2</KassenzeichenBuffer>
     </CrossoverConfiguration>
     <urls>
