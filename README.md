@@ -1,4 +1,4 @@
-lagis-configuration
+lagis-configuration [![Build Status](http://ci.cismet.de/buildStatus/icon?job=lagis-configuration)](https://ci.cismet.de/job/lagis-configuration/)
 ===================
 Repository with a example config for the lagis system. 
 
